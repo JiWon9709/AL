@@ -15,6 +15,7 @@ for k in range(n):
     for a in range(n):
         for b in range(n):
             dp[a][b] = min(dp[a][b], dp[a][k] + dp[k][b])
+            print(a, b, k)
 
 for i in range(n):
     for j in range(n):
