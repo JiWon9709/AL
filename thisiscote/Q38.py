@@ -16,7 +16,7 @@ for k in range(1, n+1):
     for a in range(1,n+1):
         for b in range(1, n+1):
             dp[a][b] = min(dp[a][b], dp[a][k]+dp[k][b])
-print(*dp)
+
 cnt = 0
 for i in range(1, n+1):
     count = 0
@@ -26,6 +26,7 @@ for i in range(1, n+1):
     if count == n:
         cnt += 1
 print(cnt)
+print(*dp)
 
 # input 입력 세트
 # 6 6
