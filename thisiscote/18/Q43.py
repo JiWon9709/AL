@@ -33,9 +33,13 @@ edges.sort()
 # 간선 하나씩 확인
 for edge in edges:
     cost, a, b = edge
+    x = find_parent(parent, a)
+    y = find_parent(parent, b)
+    print(edge, x, y)
     # 사이클이 발생하지 않는 경우에만 집합에 포함
-    if find_parent(parent, a) != find_parent(parent, b):
+    if x != y:
         union_parent(parent, a, b)
+        print(a, b, parent)
         result += cost
 
 print(total - result)
