@@ -11,3 +11,7 @@
 # [2주차] Array & LinkedList
 - Array vs LinkedList
 - 특정 원소 찾기 용이 | 삽입, 삭제 용이
+- 클래스로 Node 와 LinkedList 를 생성해서 append, delete, get_node 함수 생성
+- 순열 문제가 나왔을때는 tail 속성도 추가해주면 사용하기 용이
+
+- 이진 탐색
