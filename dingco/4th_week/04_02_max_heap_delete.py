@@ -15,30 +15,30 @@ class MaxHeap:
                 break
 
     def delete(self):
-        # 가장 맨위의 값과 마지막 값을 교환
+        # [none, 8, 6, 7, 2, 5, 4]
+        # 루트 노드와 마지막 노드 위치 바꾸기
+        # [none, 4, 6, 7, 2, 5, 8]
+        #    0   1  2  3  4  5  6
         self.items[1], self.items[-1] = self.items[-1], self.items[1]
-        # 마지막값 삭제
-        prev_max = self.items.pop()
-        # 다시 정렬 부모 -> 자식 비교해야하기 때문에 루트에서 시작
-        cur_idx = 1
-        # 바닥에 도달할때까지 루프
-        while cur_idx <= len(self.items) - 1:
-            left_child_idx = cur_idx * 2
-            right_child_idx = cur_idx * 2 + 1
-            # 두 자식중 큰 노드와 자리를 바꿔야함
-            max_idx = cur_idx
-            if left_child_idx <= len(self.items)-1 and self.items[left_child_idx] > self.items[max_idx]:
-                max_idx = left_child_idx
-            if right_child_idx <= len(self.items)-1 and self.items[right_child_idx] > self.items[max_idx]:
-                max_idx = right_child_idx
-            # 자식노드보다 크면 바뀌지 않으므로 루프 탈출
-            if max_idx == cur_idx:
+        # 루트 노드 값 리턴값으로 저장
+        prev_node = self.items.pop()
+        # 변경된 루트 노드의 자식과 비교
+        # 어디까지? 바닥까지
+        cur_index = 1 # 루트노드 인덱스부터 시작
+        while cur_index <= len(self.items):
+            left_index = cur_index * 2
+            right_index = cur_index * 2 + 1
+            max_index = cur_index
+            # 왼쪽노드와 오른쪽 노드 차례대로 비교해서
+            if self.items[left_index] > self.items[max_index] and left_index < len(self.items):
+                max_index = left_index
+            if self.items[right_index] > self.items[max_index] and right_index < len(self.items):
+                max_index = right_index
+            if max_index == cur_index:
                 break
-            # 자식노드 중 큰 값과 자리 바꿈
-            self.items[cur_idx], self.items[max_idx] = self.items[max_idx], self.items[cur_idx]
-            # 다시 현재노드의 idx값을 바꿔줌.
-            cur_idx = max_idx
-        return prev_max  # 8 을 반환해야 합니다.
+            # 큰값과 교환
+            self.items[max_index], self.items[cur_index] = self.items[cur_index], self.items[max_index]
+        return prev_node
 
 
 max_heap = MaxHeap()
